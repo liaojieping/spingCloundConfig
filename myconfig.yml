@@ -1,0 +1,40 @@
+server:
+  port: 8089 #应用端口
+spring:
+  application:
+    name: eureka-customer #应用名称
+  profiles: dev
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: eureka-customer-hystrix1 #自定义hystrix服务器名称相关名称
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8751/eureka/ #注册中心地址，若想做成集群，在service-url配置多个地址即可
+feign:
+  hystrix:
+    enabled: true  
+---
+server:
+  port: 8088 #应用端口
+spring:
+  application:
+    name: eureka-customer #应用名称
+  profiles: test
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: eureka-customer-hystrix1 #自定义hystrix服务器名称相关名称
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8751/eureka/ #注册中心地址，若想做成集群，在service-url配置多个地址即可
+feign:
+  hystrix:
+    enabled: true  
+
+
+
