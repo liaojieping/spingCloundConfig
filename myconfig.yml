@@ -1,6 +1,17 @@
 server:
   port: 8089 #应用端口
 spring:
+   redis:
+    database: 2
+    host: localhost
+    port: 6379
+    password: XqbSXMIThB6MyHWV
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+    timeout: 100ms
   application:
     name: eureka-customer #应用名称
   profiles: dev
