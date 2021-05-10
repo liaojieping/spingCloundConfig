@@ -30,7 +30,30 @@ feign:
 ---
 server:
   port: 8088 #应用端口
+security:
+  oauth2:
+    client:
+      client-id: test
+      client-secret: user-secret-8888
+      user-authorization-uri: http://localhost:8090/oauth/authorize
+      access-token-uri: http://localhost:8090/oauth/token
+    resource:
+      id: test
+      user-info-uri: user-info
+    authorization:
+      check-token-access: http://localhost:8090/oauth/check_token  
 spring:
+   redis:
+    database: 2
+    host: localhost
+    port: 6379
+    password: XqbSXMIThB6MyHWV
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+    timeout: 100ms
   application:
     name: eureka-customer #应用名称
   profiles: test
